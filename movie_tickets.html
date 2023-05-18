@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color:darkred;
+            text-align: center;
+            position: absolute;
+            left:570px;
+            top: 110px;
+        }
+        table {
+            display: flex;
+            justify-content: center ;
+            margin-top: 200px;
+            
+        }
+        th, td{
+
+            padding:25px;
+        }
+        .cancel{
+            font-size: 25px;
+            color: crimson;
+            align:center;
+        }
+    </style>
+</head>
+<body>
+    <h1><b>Book Your Tickets Here</b></h1>
+    <table>
+        <tr cell-padding=25px>
+            <td>
+       <label >user name   </label> 
+    </td>
+    <td>
+       <input type="text" id ="user">
+    </td>
+    </tr>
+    <tr>
+        <td>
+       <label>password   </label> 
+       </td>
+       <td>
+       <input type="password" id="psd">
+       </td>
+    </tr>
+    <tr>
+        <td>
+       <label>movie name   </label> 
+       </td>
+       <td>
+       <select>
+            <option value="">Avengers</option>
+            <option value="">Avengers: age of ultron</option>
+            <option value="">Avengers: infinite war</option>
+            <option value="">Avengers: End game</option>
+            
+       </select>
+       </td>
+    </tr>
+    <tr>
+        <td>
+       <label>Class   </label>
+       </td>
+       <td>
+       <select id="prices" >
+        <option value="350">Diamond</option>
+        <option value="250">Gold</option>
+        <option value="100">Silver</option>
+       </select>
+       </td>
+    </tr>
+    <tr>
+        <td>
+       <label >Number of Tickets  </label>
+       </td>
+       <td>
+       <input type="number" id = "tickets" class="clear" >
+       </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button onclick="cancel()">Cancel</button>
+        
+            <button onclick="book()">Book Now</button>
+       
+            <button onclick="submit()">Submit</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <label  id="res" class="cancel"></label>
+        </td>
+    </tr>
+    </table>
+    
+    <script>
+
+        function cancel(){
+            document.getElementById("res").innerHTML="Canceled";
+            document.getElementById("res").style.color="red";
+            document.getElementById("clear").value=""
+
+        }
+        function book(){
+            document.getElementById("res").innerHTML="successfully booked";
+            document.getElementById("res").style.color="green";
+        }
+        function submit()
+        {
+                username=document.getElementById("user").value;
+                password=document.getElementById("psd").value;
+                correctpsd=username.substr(0,3)+"123"
+            if(correctpsd!=password){
+                document.getElementById("res").innerHTML="Wrong Password";
+                document.getElementById("res").style.color="red";
+            }
+            else{
+            price=parseInt(document.getElementById("prices").value);
+            ticket=parseInt(document.getElementById("tickets").value);
+
+            ticketcost=price*ticket
+            totalcost=ticketcost+(ticketcost*8/100)
+            document.getElementById("res").innerHTML="COST : "+totalcost; 
+            document.getElementById("res").style.color="blue"; 
+        }
+            
+        }
+
+    </script>
+
+</body>
+</html>
